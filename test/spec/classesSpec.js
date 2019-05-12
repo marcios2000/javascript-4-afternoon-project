@@ -76,6 +76,7 @@ describe('Classes', function () {
       let emp = new ProgressiveManager("Dallin", "Anderson", "Dallin@DallinDallin.com", 25)
       
       emp.hire(new Employee("Ballin", "BAnderson", "Ballin@BallinBallin.com", 22));
+      console.log(emp)
       expect(emp.title).toEqual("Barely Manager")
 
       hireTimes(5, emp);

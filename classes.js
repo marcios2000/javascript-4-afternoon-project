@@ -30,6 +30,19 @@
 */
 
 //Code Here
+class Employee {
+  constructor(first_name, last_name, email, age){
+    this.first_name = first_name;
+    this.last_name = last_name;
+    this.email = email;
+    this.age = age;
+  }
+  makeWidget(){
+    return this.first_name + " " + this.last_name + " " + "Widget"
+  }
+
+}
+
 
 
 ////////// PROBLEM 2 //////////
@@ -47,9 +60,23 @@
   Call your new class Manager
 */
 
-//Code Here
+// Code Here
+class Manager extends Employee {
+  constructor(first_name, last_name, email, age){
+    super(first_name, last_name, email, age)
+    this.reports = []
 
-
+  }
+  makeWidget(){
+    return this.first_name + " " + this.last_name + " " + "Widget"
+  }
+  hire(employee){
+    return this.reports.push(employee)
+  }
+  fire(index){
+    return this.reports.splice(index, 1)
+  }
+}
 ////////// PROBLEM 3 //////////
 
 /*
@@ -72,6 +99,56 @@
 */
 
 //Code Here
+class ProgressiveManager extends Manager {
+  constructor(first_name, last_name, email, age){
+    super(first_name, last_name, email, age)
+    this.reports = [];
+    this.title = "Not a manager";
+    this.bonus = 0;
+  }
+  hire(employee) {
+      this.reports.push(employee);
+
+      if (this.reports.length > 100) {
+        this.title = "Bestest Manager";
+        return;
+      }
+
+      if (this.reports.length > 50) {
+        this.title = "Manager Plus";
+        return;
+      }
+
+      if (this.reports.length > 10) {
+        this.title = "Manager";
+        return;
+      }
+
+      if (this.reports.length > 3) {
+        this.title = "Mostly Manager";
+        return;
+      }
+
+      if (this.reports.length > 0) {
+        this.title = "Barely Manager";
+        return;
+      }
+
+
+
+
+    } 
+    fire(index) {
+      this.bonus += 100;
+      this.reports = [...this.reports.slice(0, index), ...this.reports.slice(index+1)];
+    } 
+    
+
+    
+   
+
+}
+
 
 
 
